@@ -5,7 +5,6 @@ word=list(lines[x])
 green = "\033[1;32m"
 yellow = "\033[1;33m"
 reset = "\033[1;0m"
-print("Terrible Python Wordle")
 def choose():
   choice = input()
   print ('\033[F\033[K\033[F')
@@ -15,21 +14,25 @@ def choose():
   else:
     choice = list(choice)
     return choice
-for i in range(0,6):
-  guess = i+1
-  inword=0
-  choice = choose()
-  while choice == 0:
+def wordle():
+  print("Terrible Python Wordle")
+  for i in range(0,6):
+    guess = i+1
+    correct = 0
     choice = choose()
-  for i in range(len(word)):
-    for i in range(len(choice)):
-      if word[i] == choice[i]:
-        choice[i] = green + choice[i] + reset
-      elif choice[i] in word:
-        choice[i] = yellow + choice[i] + reset
-  print(*choice, sep="",end=" ")
-  print(guess)
-  if choice == word:
-    print("you win!!!")
-    break
+    while choice == 0:
+      choice = choose()
+    for i in range(len(word)):
+      for i in range(len(choice)):
+        if word[i] == choice[i]:
+          choice[i] = green + choice[i] + reset
+          correct += 1
+        elif choice[i] in word:
+          choice[i] = yellow + choice[i] + reset
+    print(*choice, sep="",end=" ")
+    print(guess)
+    if correct == 5:
+      print("you win!!!")
+      return
+wordle()
 print("the word was ", *word,sep="")
