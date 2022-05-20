@@ -18,6 +18,7 @@ def choose():
 for i in range(0,6):
   guess = i+1
   inword=0
+  print(guess,end="")
   choice = choose()
   while choice == 0:
     choice = choose()
