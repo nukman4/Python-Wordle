@@ -18,7 +18,6 @@ def choose():
 for i in range(0,6):
   guess = i+1
   inword=0
-  print(guess,end="")
   choice = choose()
   while choice == 0:
     choice = choose()
@@ -28,7 +27,8 @@ for i in range(0,6):
         choice[i] = green + choice[i] + reset
       elif choice[i] in word:
         choice[i] = yellow + choice[i] + reset
-  print(guess,*choice, sep="")
+  print(*choice, sep="",end=" ")
+  print(guess)
   if choice == word:
     print("you win!!!")
     break
